@@ -1,0 +1,32 @@
+//
+//  SyncTokensRequest.swift
+//  NCLEX
+//
+//  Created by Андрей Чернышев on 03.02.2022.
+//
+
+import Alamofire
+
+struct SyncTokensRequest: APIRequestBody {
+    let domain: String
+    let apiKey: String
+    let oldToken: String
+    let newToken: String
+    
+    var url: String {
+        domain + "/api/users/set"
+    }
+    
+    var method: HTTPMethod {
+        .post
+    }
+    
+    var parameters: Parameters? {
+        [
+            "_api_key": apiKey,
+            "user_token": newToken,
+            "_user_token": oldToken,
+            "platform": 3
+        ]
+    }
+}
