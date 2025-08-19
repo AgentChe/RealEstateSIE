@@ -323,6 +323,13 @@ private extension TestViewModel {
                                                                  includeMissedQuestions: attributes.isOnMissedQuestions,
                                                                  includeAnsweredQuestions: attributes.isOnAnsweredQuestions,
                                                                  questionsCount: attributes.questionsCount)
+                case .final:
+                    test = self.questionManager.obtainFinalTest(
+                        domain: examEnvironment.exam.domain,
+                        apiKey: examEnvironment.exam.api,
+                        courseId: examEnvironment.course.id,
+                        activeSubscription: self.sessionManager.hasActiveSubscriptions()
+                    )
                 }
                 
                 return test

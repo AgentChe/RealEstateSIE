@@ -121,16 +121,16 @@ extension ProfileManager {
         Single<[Exam]>
             .create { event in
                 let exams = [
-                    Exam(code: "Real Estate",
+                    Exam(code: "ATI TEAS",
                          title: "Onboarding.Exams.Exam1.Name".localized,
                          subTitle: "Onboarding.Exams.Exam1.Text".localized,
-                         api: GlobalDefinitions.realestateApiKey,
-                         domain: GlobalDefinitions.realestateDomainUrl),
-                    Exam(code: "SIE",
+                         api: GlobalDefinitions.atiteasApiKey,
+                         domain: GlobalDefinitions.atiteasDomainUrl),
+                    Exam(code: "HESI",
                          title: "Onboarding.Exams.Exam2.Name".localized,
                          subTitle: "Onboarding.Exams.Exam2.Text".localized,
-                         api: GlobalDefinitions.sieApiKey,
-                         domain: GlobalDefinitions.sieDomainUrl)
+                         api: GlobalDefinitions.hesiApiKey,
+                         domain: GlobalDefinitions.hesiDomainUrl)
                 ]
                 
                 event(.success(exams))
@@ -225,8 +225,8 @@ private extension ProfileManager {
     }
     
     func loadProfile() -> Single<Profile?> {
-        let request = GetProfileRequest(domain: GlobalDefinitions.realestateDomainUrl,
-                                        apiKey: GlobalDefinitions.realestateApiKey,
+        let request = GetProfileRequest(domain: GlobalDefinitions.atiteasDomainUrl,
+                                        apiKey: GlobalDefinitions.atiteasApiKey,
                                         userToken: sessionManager.internalId)
         
         return defaultRequestWrapper
